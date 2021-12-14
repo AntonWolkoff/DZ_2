@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
     private Animator animator;
     private float jumpForce = 50f;
 
-    private bool isDead = false;
+    private bool isDead;
     private bool isMovement;
 
     public float speed = 0.1f;
@@ -52,5 +52,15 @@ public class CharacterController : MonoBehaviour
     private void MakeMove()
     {
         isMovement = true;
+    }
+
+    public void MakeLose()
+    {
+        isDead = true;
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }
