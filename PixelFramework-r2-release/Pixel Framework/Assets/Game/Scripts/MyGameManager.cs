@@ -14,7 +14,11 @@ public class MyGameManager : MonoBehaviour
         playButton.onClick.AddListener(() =>
         {
             CharacterController controller = player.GetComponent<CharacterController>();
-            if (!controller.IsDead())
+            if (controller.IsWon())
+            {
+                SceneManager.LoadScene("New_1");
+            } 
+            else if (!controller.IsDead())
             {
                 controller.Play();
                 playButton.interactable = false;

@@ -7,9 +7,10 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody rigidbody;
     private Animator animator;
-    private float jumpForce = 50f;
+    private float jumpForce = 30f;
 
     private bool isDead;
+    private bool isWon;
     private bool isMovement;
 
     public float speed = 0.1f;
@@ -29,7 +30,7 @@ public class CharacterController : MonoBehaviour
 
     private void Move()
     {
-        if (!isDead && isMovement)
+        if ((!isDead || !isWon) && isMovement)
         {
             rigidbody.position += Vector3.forward * speed;
             animator.SetBool("IsRunning", true);
@@ -59,8 +60,18 @@ public class CharacterController : MonoBehaviour
         isDead = true;
     }
 
+    public void MakeWin()
+    {
+        isWon = true;
+    }
+
     public bool IsDead()
     {
         return isDead;
+    }
+
+    public bool IsWon()
+    {
+        return isWon;
     }
 }
